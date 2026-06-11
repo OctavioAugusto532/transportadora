@@ -27,10 +27,11 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
         Dashboard
       </button>
-      <button class="nav-item">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-        Entregas
-      </button>
+      <a href="entregas.html" class="nav-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                Entregas
+            <span class="nav-badge" id="nav-badge" style="display:none"></span>
+       </a>
       <button class="nav-item">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         Rotas
@@ -397,50 +398,94 @@
   </div>
 
   <script>
-    let deliveryCount = 4;
-    let toastTimer;
+  let deliveryCount = 4;
+  let toastTimer;
 
-    function acceptDelivery(btn) {
-      const card = btn.closest('.delivery-card');
-      const id = card.dataset.id;
+  // Inicializa storage
+  if (!localStorage.getItem('cb_accepted')) {
+    localStorage.setItem('cb_accepted', JSON.stringify([]));
+  }
 
-      btn.textContent = 'Aceitando...';
-      btn.disabled = true;
-      card.classList.add('removing');
+  // Atualiza badge do nav ao carregar
+  updateNavBadge();
 
-      setTimeout(() => {
-        card.remove();
-        deliveryCount--;
-        document.getElementById('delivery-count').textContent =
-          deliveryCount + ' entrega' + (deliveryCount !== 1 ? 's' : '') + ' aguardando motorista';
-        if (deliveryCount === 0) {
-          document.getElementById('deliveries-grid').innerHTML =
-            '<div class="empty-state"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg><p class="empty-title">Todas as entregas foram aceitas!</p><p class="empty-sub">Novas entregas aparecerão aqui automaticamente.</p></div>';
-        }
-      }, 600);
-
-      showToast(id);
+  function updateNavBadge() {
+    const accepted = JSON.parse(localStorage.getItem('cb_accepted') || '[]');
+    const badge = document.getElementById('nav-badge');
+    if (accepted.length > 0) {
+      badge.textContent = accepted.length;
+      badge.style.display = 'inline-flex';
+    } else {
+      badge.style.display = 'none';
     }
+  }
 
-    function showToast(id) {
-      document.getElementById('toast-msg').textContent =
-        'Pedido ' + id + ' foi adicionado às suas entregas';
-      const toast = document.getElementById('toast');
-      const progress = document.getElementById('toast-progress');
-      toast.classList.add('show');
-      progress.style.transition = 'none';
-      progress.style.width = '100%';
-      requestAnimationFrame(() => {
-        progress.style.transition = 'width 4s linear';
-        progress.style.width = '0%';
-      });
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(closeToast, 4000);
-    }
+  function acceptDelivery(btn) {
+    const card = btn.closest('.delivery-card');
+    const id = card.dataset.id;
 
-    function closeToast() {
-      document.getElementById('toast').classList.remove('show');
-    }
-  </script>
+    // Coleta dados do card
+    const points = card.querySelectorAll('.dc-point-val');
+    const infos  = card.querySelectorAll('.dc-info-val');
+    const payment = card.querySelector('.dc-payment').textContent;
+    const priority = card.querySelector('.dc-priority span').textContent;
+
+    const delivery = {
+      id,
+      origin:      points[0]?.textContent || '',
+      destination: points[1]?.textContent || '',
+      distance:    infos[0]?.textContent  || '',
+      weight:      infos[1]?.textContent  || '',
+      deadline:    infos[2]?.textContent  || '',
+      payment,
+      priority,
+      status: 'accepted',      // accepted | collecting | transit | delivered
+      acceptedAt: new Date().toISOString()
+    };
+
+    // Salva no localStorage
+    const list = JSON.parse(localStorage.getItem('cb_accepted') || '[]');
+    list.push(delivery);
+    localStorage.setItem('cb_accepted', JSON.stringify(list));
+    updateNavBadge();
+
+    btn.textContent = 'Aceitando...';
+    btn.disabled = true;
+    card.classList.add('removing');
+
+    setTimeout(() => {
+      card.remove();
+      deliveryCount--;
+      document.getElementById('delivery-count').textContent =
+        deliveryCount + ' entrega' + (deliveryCount !== 1 ? 's' : '') + ' aguardando motorista';
+      if (deliveryCount === 0) {
+        document.getElementById('deliveries-grid').innerHTML =
+          '<div class="empty-state"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg><p class="empty-title">Todas as entregas foram aceitas!</p><p class="empty-sub">Novas entregas aparecerão aqui automaticamente.</p></div>';
+      }
+    }, 600);
+
+    showToast(id);
+  }
+
+  function showToast(id) {
+    document.getElementById('toast-msg').textContent =
+      'Pedido ' + id + ' foi adicionado às suas entregas';
+    const toast = document.getElementById('toast');
+    const progress = document.getElementById('toast-progress');
+    toast.classList.add('show');
+    progress.style.transition = 'none';
+    progress.style.width = '100%';
+    requestAnimationFrame(() => {
+      progress.style.transition = 'width 4s linear';
+      progress.style.width = '0%';
+    });
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(closeToast, 4000);
+  }
+
+  function closeToast() {
+    document.getElementById('toast').classList.remove('show');
+  }
+</script>
 </body>
 </html>
