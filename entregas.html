@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CargaByte — Entregas</title>
+  <link rel="stylesheet" href="entregas.css" />
+</head>
+<body>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-wrapper">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M3 9L12 2L21 9V20C21 20.53 20.79 21.04 20.41 21.41C20.04 21.79 19.53 22 19 22H5C4.47 22 3.96 21.79 3.59 21.41C3.21 21.04 3 20.53 3 20V9Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 22V12H15V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="logo-text">Carga<span class="logo-byte">Byte</span></span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </a>
+      <a href="entregas.html" class="nav-item active">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        Entregas
+        <span class="nav-badge" id="nav-badge" style="display:none"></span>
+      </a>
+      <a href="#" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Rotas
+      </a>
+      <a href="#" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Motoristas
+      </a>
+      <a href="#" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        Relatórios
+      </a>
+      <a href="#" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Documentos
+      </a>
+      <a href="#" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M1 12h2M21 12h2M12 1v2M12 21v2"/></svg>
+        Configurações
+      </a>
+    </nav>
+
+    <div class="sidebar-user">
+      <div class="user-card">
+        <div class="user-avatar">JD</div>
+        <div class="user-info">
+          <p class="user-name">João da Silva</p>
+          <p class="user-role">Administrador</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1 class="page-title">Minhas Entregas</h1>
+        <p class="page-subtitle">Gerencie e acompanhe todas as suas entregas aceitas.</p>
+      </div>
+      <div class="topbar-right">
+        <button class="btn-danger" id="btn-clear" onclick="clearAll()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+          Limpar tudo
+        </button>
+        <a href="index.html" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Nova Entrega
+        </a>
+      </div>
+    </header>
+
+    <div class="page-body">
+
+      <!-- Summary cards -->
+      <div class="summary-grid" id="summary-grid">
+        <div class="sum-card" style="--c:#FF7A00">
+          <p class="sum-label">Total Aceitas</p>
+          <h3 class="sum-val" id="sum-total">0</h3>
+        </div>
+        <div class="sum-card" style="--c:#f59e0b">
+          <p class="sum-label">Em Coleta</p>
+          <h3 class="sum-val" id="sum-collecting">0</h3>
+        </div>
+        <div class="sum-card" style="--c:#3b82f6">
+          <p class="sum-label">Em Trânsito</p>
+          <h3 class="sum-val" id="sum-transit">0</h3>
+        </div>
+        <div class="sum-card" style="--c:#059669">
+          <p class="sum-label">Entregues</p>
+          <h3 class="sum-val" id="sum-delivered">0</h3>
+        </div>
+        <div class="sum-card" style="--c:#059669; grid-column: span 2;">
+          <p class="sum-label">Receita Total</p>
+          <h3 class="sum-val" id="sum-revenue">R$ 0</h3>
+        </div>
+      </div>
+
+      <!-- Filter bar -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all" onclick="setFilter(this)">Todas</button>
+        <button class="filter-btn" data-filter="accepted"   onclick="setFilter(this)">Aceitas</button>
+        <button class="filter-btn" data-filter="collecting" onclick="setFilter(this)">Em Coleta</button>
+        <button class="filter-btn" data-filter="transit"    onclick="setFilter(this)">Em Trânsito</button>
+        <button class="filter-btn" data-filter="delivered"  onclick="setFilter(this)">Entregues</button>
+        <div class="filter-search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="search-input" placeholder="Buscar por ID ou cidade..." oninput="applySearch()" />
+        </div>
+      </div>
+
+      <!-- Delivery list -->
+      <div id="list-container"></div>
+
+    </div>
+  </main>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <div class="toast-icon" id="toast-icon-wrap">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" id="toast-icon-svg"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+    <div class="toast-body">
+      <p class="toast-title" id="toast-title">Status atualizado</p>
+      <p class="toast-msg"   id="toast-msg">-</p>
+    </div>
+    <button class="toast-close" onclick="closeToast()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="toast-progress" id="toast-progress"></div>
+  </div>
+
+  <script>
+    /* ===== DATA ===== */
+    const STATUS_FLOW = ['accepted', 'collecting', 'transit', 'delivered'];
+
+    const STATUS_META = {
+      accepted:   { label: 'Aceita',      color: '#FF7A00', next: 'Iniciar Coleta' },
+      collecting: { label: 'Em Coleta',   color: '#f59e0b', next: 'Confirmar Saída' },
+      transit:    { label: 'Em Trânsito', color: '#3b82f6', next: 'Confirmar Entrega' },
+      delivered:  { label: 'Entregue',    color: '#059669', next: null }
+    };
+
+    let currentFilter = 'all';
+
+    /* ===== INIT ===== */
+    function load() {
+      return JSON.parse(localStorage.getItem('cb_accepted') || '[]');
+    }
+    function save(list) {
+      localStorage.setItem('cb_accepted', JSON.stringify(list));
+    }
+
+    function init() {
+      updateSummary();
+      renderList();
+      updateNavBadge();
+    }
+
+    /* ===== NAV BADGE ===== */
+    function updateNavBadge() {
+      const list = load();
+      const badge = document.getElementById('nav-badge');
+      if (list.length > 0) {
+        badge.textContent = list.length;
+        badge.style.display = 'inline-flex';
+      } else {
+        badge.style.display = 'none';
+      }
+    }
+
+    /* ===== SUMMARY ===== */
+    function updateSummary() {
+      const list = load();
+      document.getElementById('sum-total').textContent = list.length;
+      document.getElementById('sum-collecting').textContent = list.filter(d => d.status === 'collecting').length;
+      document.getElementById('sum-transit').textContent    = list.filter(d => d.status === 'transit').length;
+      document.getElementById('sum-delivered').textContent  = list.filter(d => d.status === 'delivered').length;
+
+      const total = list.reduce((acc, d) => {
+        const val = parseFloat(d.payment.replace('R$','').replace('.','').replace(',','.').trim()) || 0;
+        return acc + val;
+      }, 0);
+      document.getElementById('sum-revenue').textContent =
+        'R$ ' + total.toLocaleString('pt-BR', { minimumFractionDigits: 0 });
+    }
+
+    /* ===== FILTER ===== */
+    function setFilter(btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      renderList();
+    }
+
+    function applySearch() { renderList(); }
+
+    /* ===== RENDER ===== */
+    function renderList() {
+      let list = load();
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+
+      if (currentFilter !== 'all') {
+        list = list.filter(d => d.status === currentFilter);
+      }
+      if (query) {
+        list = list.filter(d =>
+          d.id.toLowerCase().includes(query) ||
+          d.origin.toLowerCase().includes(query) ||
+          d.destination.toLowerCase().includes(query)
+        );
+      }
+
+      const container = document.getElementById('list-container');
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            </svg>
+            <p class="empty-title">Nenhuma entrega encontrada</p>
+            <p class="empty-sub">Aceite entregas no <a href="index.html" style="color:var(--orange)">Dashboard</a> para vê-las aqui.</p>
+          </div>`;
+        return;
+      }
+
+      container.innerHTML = list.map((d, i) => buildCard(d, i)).join('');
+    }
+
+    function buildCard(d, i) {
+      const meta = STATUS_META[d.status];
+      const stepIndex = STATUS_FLOW.indexOf(d.status);
+      const steps = ['Aceita', 'Em Coleta', 'Em Trânsito', 'Entregue'];
+      const stepIcons = [
+        '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+        '<path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>',
+        '<rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>',
+        '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'
+      ];
+
+      const date = new Date(d.acceptedAt);
+      const dateStr = date.toLocaleDateString('pt-BR') + ' ' + date.toLocaleTimeString('pt-BR', { hour:'2-digit', minute:'2-digit' });
+
+      const progressPct = (stepIndex / (STATUS_FLOW.length - 1)) * 100;
+
+      const nextBtn = meta.next
+        ? `<button class="btn-next-status" onclick="advanceStatus('${d.id}')">
+             ${meta.next}
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+           </button>`
+        : `<span class="delivered-tag">
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+             Concluída
+           </span>`;
+
+      const stepsHtml = steps.map((s, si) => `
+        <div class="step ${si <= stepIndex ? 'done' : ''} ${si === stepIndex ? 'current' : ''}">
+          <div class="step-dot">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">${stepIcons[si]}</svg>
+          </div>
+          <span class="step-label">${s}</span>
+        </div>
+        ${si < steps.length - 1 ? `<div class="step-line ${si < stepIndex ? 'done' : ''}"></div>` : ''}
+      `).join('');
+
+      return `
+        <div class="et-card" data-id="${d.id}" style="--sc:${meta.color}; animation-delay:${i * 0.07}s">
+          <div class="et-card-top">
+            <div class="et-id-block">
+              <div class="et-icon-wrap">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${meta.color}" stroke-width="2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="et-id">${d.id}</p>
+                <p class="et-date">Aceito em ${dateStr}</p>
+              </div>
+            </div>
+            <div class="et-right-top">
+              <span class="et-status-badge" style="background:${meta.color}22;color:${meta.color}">${meta.label}</span>
+              <button class="et-remove" title="Remover" onclick="removeDelivery('${d.id}')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Route -->
+          <div class="et-route">
+            <div class="et-route-point">
+              <div class="et-dot origin"></div>
+              <div>
+                <p class="et-point-label">Origem</p>
+                <p class="et-point-val">${d.origin}</p>
+              </div>
+            </div>
+            <div class="et-route-line"></div>
+            <div class="et-route-point">
+              <div class="et-dot dest"></div>
+              <div>
+                <p class="et-point-label">Destino</p>
+                <p class="et-point-val">${d.destination}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Info chips -->
+          <div class="et-chips">
+            <span class="chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>${d.distance}</span>
+            <span class="chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>${d.weight}</span>
+            <span class="chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Prazo: ${d.deadline}</span>
+            <span class="chip priority-chip" style="background:${priorityColor(d.priority)}22;color:${priorityColor(d.priority)}">${d.priority}</span>
+          </div>
+
+          <!-- Progress stepper -->
+          <div class="et-stepper">${stepsHtml}</div>
+
+          <!-- Progress bar -->
+          <div class="et-progress-track">
+            <div class="et-progress-bar" style="width:${progressPct}%;background:${meta.color}"></div>
+          </div>
+
+          <!-- Footer -->
+          <div class="et-footer">
+            <span class="et-payment">${d.payment}</span>
+            ${nextBtn}
+          </div>
+        </div>`;
+    }
+
+    function priorityColor(p) {
+      return p === 'Alta' ? '#FF7A00' : p === 'Média' ? '#f59e0b' : '#059669';
+    }
+
+    /* ===== ACTIONS ===== */
+    function advanceStatus(id) {
+      const list = load();
+      const item = list.find(d => d.id === id);
+      if (!item) return;
+
+      const idx = STATUS_FLOW.indexOf(item.status);
+      if (idx < STATUS_FLOW.length - 1) {
+        item.status = STATUS_FLOW[idx + 1];
+      }
+      save(list);
+      updateSummary();
+      renderList();
+
+      const meta = STATUS_META[item.status];
+      showToast(`${id} agora está: ${meta.label}`, meta.color);
+    }
+
+    function removeDelivery(id) {
+      const list = load().filter(d => d.id !== id);
+      save(list);
+      updateSummary();
+      renderList();
+      updateNavBadge();
+    }
+
+    function clearAll() {
+      if (!confirm('Tem certeza que deseja remover todas as entregas?')) return;
+      save([]);
+      updateSummary();
+      renderList();
+      updateNavBadge();
+    }
+
+    /* ===== TOAST ===== */
+    let toastTimer;
+    function showToast(msg, color = '#059669') {
+      document.getElementById('toast-msg').textContent = msg;
+      document.getElementById('toast-icon-svg').style.stroke = color;
+      document.getElementById('toast-progress').style.background = color;
+      const toast = document.getElementById('toast');
+      const progress = document.getElementById('toast-progress');
+      toast.style.borderColor = color;
+      toast.classList.add('show');
+      progress.style.transition = 'none';
+      progress.style.width = '100%';
+      requestAnimationFrame(() => {
+        progress.style.transition = 'width 3s linear';
+        progress.style.width = '0%';
+      });
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(closeToast, 3000);
+    }
+    function closeToast() {
+      document.getElementById('toast').classList.remove('show');
+    }
+
+    init();
+  </script>
+</body>
+</html>
