@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CargaByte – Entrega no Mesmo Dia para E-commerce</title>
+  <link rel="stylesheet" href="comecarStyling.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="logo-icons">
+          <svg class="icon-pkg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16.5 9.4 7.55 4.24"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/>
+          </svg>
+          <svg class="icon-trk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/>
+            <rect x="9" y="11" width="14" height="10" rx="2"/>
+            <circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          </svg>
+        </div>
+        <span><span class="c-white">Carga</span><span class="c-red">Byte</span></span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="saiba-mais.html">Saiba mais</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn-ghost-nav">Entrar</a>
+        <a href="register.html" class="btn-orange-sm">Começar agora</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-moto-fade"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-vignette"></div>
+    </div>
+
+    <div class="container hero-body">
+      <div class="hero-tag">
+        <span class="tag-dot"></span>
+        Same-Day &amp; Next-Day Delivery para e-commerce
+      </div>
+
+      <h1 class="hero-title">
+        Seu cliente comprou.<br/>
+        <span class="c-orange">Entregue hoje.</span>
+      </h1>
+
+      <p class="hero-sub">
+        O CargaByte integra com a sua loja em minutos. Venda feita → etiqueta gerada → coleta acionada. Automático, ultrarrápido e sem depender dos Correios.
+      </p>
+
+      <div class="hero-badges">
+        <div class="hero-badge-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Entrega em até 4h
+        </div>
+        <div class="hero-badge-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Rastreamento ao vivo
+        </div>
+        <div class="hero-badge-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          API REST + Webhooks
+        </div>
+        <div class="hero-badge-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          Sem mensalidade fixa
+        </div>
+      </div>
+    </div>
+
+    <!-- Painel flutuante de pedido ao vivo -->
+    <div class="live-card" id="live-card">
+      <div class="live-dot"></div>
+      <div class="live-info">
+        <strong id="live-store">Loja Martinho Campos MG</strong>
+        <span id="live-msg">Coleta acionada — chegando em 12 min</span>
+      </div>
+      <div class="live-time" id="live-time">agora</div>
+    </div>
+
+    <div class="hero-scroll-arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+  <!-- ===== PROBLEMA / SOLUÇÃO ===== -->
+  <section class="section" id="problema">
+    <div class="container split-section">
+      <div class="split-text" data-reveal>
+        <div class="pill">O problema</div>
+        <h2>Os Correios atrasam.<br/>O cliente abandona.</h2>
+        <p>
+          79% dos compradores online desistem de uma nova compra após uma entrega ruim. Prazo longo é abandono de carrinho antes mesmo de finalizar.
+        </p>
+        <ul class="pain-list">
+          <li>
+            <div class="pain-icon bad">✕</div>
+            Prazo dos Correios: 5 a 12 dias úteis
+          </li>
+          <li>
+            <div class="pain-icon bad">✕</div>
+            Rastreamento atualizado só no dia seguinte
+          </li>
+          <li>
+            <div class="pain-icon bad">✕</div>
+            Sem integração automática — etiqueta manual
+          </li>
+          <li>
+            <div class="pain-icon bad">✕</div>
+            Reclamação = custo no SAC e devolução
+          </li>
+        </ul>
+      </div>
+      <div class="split-text" data-reveal>
+        <div class="pill pill-green">A solução CargaByte</div>
+        <h2>Venda mais.<br/><span class="c-orange">Entregue hoje.</span></h2>
+        <p>
+          Automatizamos do clique ao buzzer. Sua loja emite o pedido, nós geramos a etiqueta e acionamos a coleta — tudo em menos de 60 segundos.
+        </p>
+        <ul class="pain-list">
+          <li>
+            <div class="pain-icon good">✓</div>
+            Same-Day Delivery em até 4 horas
+          </li>
+          <li>
+            <div class="pain-icon good">✓</div>
+            Rastreamento ao vivo a cada 30 segundos
+          </li>
+          <li>
+            <div class="pain-icon good">✓</div>
+            Integração automática via API ou plugin
+          </li>
+          <li>
+            <div class="pain-icon good">✓</div>
+            98% de satisfação dos destinatários
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMO FUNCIONA ===== -->
+  <section class="section bg-dark" id="como-funciona">
+    <div class="container">
+      <div class="section-header light">
+        <div class="pill pill-light">Como funciona</div>
+        <h2>Do clique do cliente ao buzzer da porta</h2>
+        <p>Um fluxo 100% automático — você só vende. A gente entrega.</p>
+      </div>
+      <div class="flow">
+        <div class="flow-step" data-reveal>
+          <div class="flow-num">1</div>
+          <div class="flow-icon" style="background:linear-gradient(135deg,#FF7A00,#ff9a3c)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+          <h3>Compra aprovada</h3>
+          <p>O cliente finaliza o pedido na sua loja. Pagamento confirmado, nosso webhook recebe o evento instantaneamente.</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" data-reveal>
+          <div class="flow-num">2</div>
+          <div class="flow-icon" style="background:linear-gradient(135deg,#dc2626,#f87171)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <h3>Etiqueta gerada</h3>
+          <p>Em menos de 60 segundos nossa API cria e envia a etiqueta de envio automaticamente para o seu estoque ou parceiro de fulfillment.</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" data-reveal>
+          <div class="flow-num">3</div>
+          <div class="flow-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/></svg>
+          </div>
+          <h3>Coleta acionada</h3>
+          <p>O entregador mais próximo é notificado e sai para a coleta. ETA em tempo real visível para você e para o seu cliente.</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" data-reveal>
+          <div class="flow-num">4</div>
+          <div class="flow-icon" style="background:linear-gradient(135deg,#059669,#34d399)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Entregue &amp; comprovado</h3>
+          <p>Foto na porta, assinatura digital e notificação automática para o cliente via SMS/WhatsApp. Comprovante salvo na nuvem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTEGRAÇÃO ===== -->
+  <section class="section" id="integracao">
+    <div class="container">
+      <div class="section-header">
+        <div class="pill">Integração técnica</div>
+        <h2>Conecte em minutos,<br/>não em semanas</h2>
+        <p>API REST moderna com documentação completa, SDKs prontos e plugins nativos para as principais plataformas.</p>
+      </div>
+
+      <div class="integration-layout">
+        <div class="integration-code" data-reveal>
+          <div class="code-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-title">POST /v1/shipments</span>
+          </div>
+          <pre class="code-block"><span class="c-comment">// Pedido aprovado → acionar coleta</span>
+<span class="c-keyword">const</span> shipment = <span class="c-keyword">await</span> cargabyte.shipments.create({
+  <span class="c-string">order_id</span>: <span class="c-value">"ORD-48291"</span>,
+  <span class="c-string">pickup</span>: {
+    <span class="c-string">address</span>: <span class="c-value">"Rua das Flores, 120 - SP"</span>,
+    <span class="c-string">ready_in_minutes</span>: <span class="c-num">15</span>
+  },
+  <span class="c-string">delivery</span>: {
+    <span class="c-string">address</span>: customer.address,
+    <span class="c-string">type</span>: <span class="c-value">"same_day"</span>
+  },
+  <span class="c-string">notify_customer</span>: <span class="c-bool">true</span>
+});
+
+<span class="c-comment">// Resposta em &lt; 300ms</span>
+<span class="c-comment">// → shipment.tracking_url</span>
+<span class="c-comment">// → shipment.eta_minutes: 42</span>
+<span class="c-comment">// → shipment.courier.name: "Diego S."</span></pre>
+        </div>
+
+        <div class="integration-features" data-reveal>
+          <div class="int-feature">
+            <div class="int-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div>
+              <strong>API REST + SDKs</strong>
+              <p>Node.js, PHP, Python e Java. Documentação OpenAPI 3.0 com sandbox para testar sem custo.</p>
+            </div>
+          </div>
+          <div class="int-feature">
+            <div class="int-icon" style="background:rgba(220,38,38,0.1);color:#dc2626">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </div>
+            <div>
+              <strong>Webhooks em tempo real</strong>
+              <p>Eventos de coleta, trânsito e entrega disparados instantaneamente para o seu sistema.</p>
+            </div>
+          </div>
+          <div class="int-feature">
+            <div class="int-icon" style="background:rgba(124,58,237,0.1);color:#7c3aed">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div>
+              <strong>Plugins sem código</strong>
+              <p>Shopify, WooCommerce, VTEX e Nuvemshop. Instale o plugin e configure em 5 minutos — zero código.</p>
+            </div>
+          </div>
+          <div class="int-feature">
+            <div class="int-icon" style="background:rgba(5,150,105,0.1);color:#059669">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div>
+              <strong>Documentação completa</strong>
+              <p>Guia de início rápido, exemplos reais e suporte técnico dedicado para a sua integração.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESULTADOS ===== -->
+  <section class="section results-section" id="resultados">
+    <div class="results-truck-bg"></div>
+    <div class="results-overlay"></div>
+    <div class="container" style="position:relative;z-index:2">
+      <div class="section-header light">
+        <div class="pill pill-light">Resultados reais</div>
+        <h2>Números que convencem</h2>
+        <p>Dados reais dos lojistas que migraram para o CargaByte nos últimos 12 meses.</p>
+      </div>
+      <div class="results-grid">
+        <div class="result-card" data-reveal>
+          <div class="result-icon" style="background:rgba(255,122,0,0.2)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF7A00" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <strong class="result-val" data-target="40">0</strong><span class="result-suffix">%</span>
+          <span class="result-label">Aumento na taxa de recompra</span>
+          <p>Clientes que recebem no mesmo dia compram 2x mais no mês seguinte.</p>
+        </div>
+        <div class="result-card" data-reveal>
+          <div class="result-icon" style="background:rgba(220,38,38,0.2)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <strong class="result-val" data-target="60">0</strong><span class="result-suffix">%</span>
+          <span class="result-label">Menos reclamações no SAC</span>
+          <p>Rastreamento ao vivo elimina o "cadê meu pedido?" do suporte.</p>
+        </div>
+        <div class="result-card" data-reveal>
+          <div class="result-icon" style="background:rgba(5,150,105,0.2)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <strong class="result-val" data-target="23">0</strong><span class="result-suffix">%</span>
+          <span class="result-label">Redução no custo de frete</span>
+          <p>Roteirização inteligente reduz distância percorrida e custo por entrega.</p>
+        </div>
+        <div class="result-card" data-reveal>
+          <div class="result-icon" style="background:rgba(124,58,237,0.2)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <strong class="result-val" data-target="98">0</strong><span class="result-suffix">%</span>
+          <span class="result-label">Satisfação dos destinatários</span>
+          <p>NPS médio de 87 pontos. O melhor argumento de venda que você pode ter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PLANOS ===== -->
+  <section class="section bg-light" id="planos">
+    <div class="container">
+      <div class="section-header">
+        <div class="pill">Planos</div>
+        <h2>Preço justo, sem surpresas</h2>
+        <p>Pague apenas pelo que entregar. Sem mensalidade, sem taxa de adesão.</p>
+      </div>
+
+      <div class="plans-grid">
+
+        <div class="plan-card" data-reveal>
+          <div class="plan-header">
+            <div class="plan-name">Starter</div>
+            <div class="plan-price"><span class="plan-currency">R$</span>12<span class="plan-per">/entrega</span></div>
+            <p class="plan-desc">Para quem está começando ou tem volume baixo.</p>
+          </div>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> Até 200 entregas/mês</li>
+            <li><span class="check">✓</span> Same-Day em capitais</li>
+            <li><span class="check">✓</span> Rastreamento ao vivo</li>
+            <li><span class="check">✓</span> Plugin Shopify / Nuvemshop</li>
+            <li><span class="check">✓</span> Suporte via chat</li>
+            <li class="disabled"><span>✕</span> API REST dedicada</li>
+            <li class="disabled"><span>✕</span> Gerente de conta</li>
+          </ul>
+          <a href="register.html" class="btn-plan-outline">Começar grátis</a>
+        </div>
+
+        <div class="plan-card plan-featured" data-reveal>
+          <div class="plan-badge">Mais popular</div>
+          <div class="plan-header">
+            <div class="plan-name">Growth</div>
+            <div class="plan-price"><span class="plan-currency">R$</span>9<span class="plan-per">/entrega</span></div>
+            <p class="plan-desc">Para e-commerces em expansão com volume crescente.</p>
+          </div>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> Até 2.000 entregas/mês</li>
+            <li><span class="check">✓</span> Same-Day + Next-Day</li>
+            <li><span class="check">✓</span> Rastreamento ao vivo</li>
+            <li><span class="check">✓</span> Todos os plugins</li>
+            <li><span class="check">✓</span> API REST + Webhooks</li>
+            <li><span class="check">✓</span> Suporte prioritário 24h</li>
+            <li class="disabled"><span>✕</span> Gerente de conta</li>
+          </ul>
+          <a href="register.html" class="btn-plan-primary">Começar agora</a>
+        </div>
+
+        <div class="plan-card" data-reveal>
+          <div class="plan-header">
+            <div class="plan-name">Enterprise</div>
+            <div class="plan-price plan-custom">Sob consulta</div>
+            <p class="plan-desc">Para operações de alto volume com necessidades customizadas.</p>
+          </div>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> Volume ilimitado</li>
+            <li><span class="check">✓</span> SLA dedicado</li>
+            <li><span class="check">✓</span> Integração customizada</li>
+            <li><span class="check">✓</span> Fulfillment integrado</li>
+            <li><span class="check">✓</span> API com rate limit alto</li>
+            <li><span class="check">✓</span> Suporte 24/7</li>
+            <li><span class="check">✓</span> Gerente de conta dedicado</li>
+          </ul>
+          <a href="mailto:enterprise@cargabyte.com.br" class="btn-plan-outline">Falar com vendas</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DEPOIMENTOS ===== -->
+  <section class="section" id="depoimentos">
+    <div class="container">
+      <div class="section-header">
+        <div class="pill">Depoimentos</div>
+        <h2>Lojistas que já entregam mais rápido</h2>
+      </div>
+      <div class="testimonials">
+        <div class="testimonial" data-reveal>
+          <div class="stars">★★★★★</div>
+          <p>"Integrei com o Shopify em 8 minutos. No mesmo dia já tinha minha primeira entrega feita em 3h. Meu carrinho abandonado caiu 31% no mês seguinte."</p>
+          <div class="t-author">
+            <div class="avatar">AF</div>
+            <div>
+              <strong>Ana Ferreira</strong>
+              <span>Fundadora – Loja Beleza Real</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial" data-reveal>
+          <div class="stars">★★★★★</div>
+          <p>"A API é simplesmente impecável. Documentação clara, sandbox funcional e o webhook chega em menos de 2 segundos depois da coleta. Equipe técnica excelente."</p>
+          <div class="t-author">
+            <div class="avatar" style="background:linear-gradient(135deg,#dc2626,#f87171)">MR</div>
+            <div>
+              <strong>Marcos Rocha</strong>
+              <span>CTO – TechStore Brasil</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial" data-reveal>
+          <div class="stars">★★★★★</div>
+          <p>"Migrei do serviço dos Correios para o CargaByte e economizei 19% no frete médio. Sem falar que minhas avaliações no Reclame Aqui passaram de 6 para 9.4."</p>
+          <div class="t-author">
+            <div class="avatar" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">JS</div>
+            <div>
+              <strong>Julia Santos</strong>
+              <span>CEO – ModaRápida</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section class="cta-final">
+    <div class="cta-moto-bg"></div>
+    <div class="cta-overlay-final"></div>
+    <div class="container cta-final-body">
+      <h2>Pronto para entregar no mesmo dia?</h2>
+      <p>Crie sua conta, integre sua loja e faça a primeira entrega grátis. Sem cartão de crédito.</p>
+      <div class="cta-final-actions">
+        <a href="register.html" class="btn-orange btn-hero">
+          Criar conta gratuita
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="saiba-mais.html" class="btn-outline-hero">Saiba mais</a>
+      </div>
+      <p class="cta-note">Primeira entrega grátis · Cancele quando quiser · Suporte em português</p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo-wrap">
+          <div class="logo-icons sm">
+            <svg class="icon-pkg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16.5 9.4 7.55 4.24"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <span class="footer-logotext"><span class="c-orange">Carga</span><span class="c-red">Byte</span></span>
+        </div>
+        <p>Entregas ultrarrápidas para e-commerce. Do clique ao buzzer.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Twitter/X">𝕏</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <strong>Produto</strong>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#integracao">Integração API</a>
+        <a href="#planos">Planos e preços</a>
+        <a href="saiba-mais.html">Saiba mais</a>
+      </div>
+      <div class="footer-col">
+        <strong>Empresa</strong>
+        <a href="#">Sobre nós</a>
+        <a href="#">Blog</a>
+        <a href="#">Trabalhe conosco</a>
+        <a href="#">Contato</a>
+      </div>
+      <div class="footer-col">
+        <strong>Conta</strong>
+        <a href="login.html">Entrar</a>
+        <a href="register.html">Cadastrar</a>
+        <a href="forgot-password.html">Esqueci a senha</a>
+        <a href="#">Status do sistema</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2026 CargaByte Logística Ltda. CNPJ 00.000.000/0001-00</p>
+        <div class="footer-legal">
+          <a href="#">Privacidade</a>
+          <a href="#">Termos de uso</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

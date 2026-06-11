@@ -1,0 +1,305 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url("https://images.unsplash.com/photo-1616432043562-3671ea2e5242?auto=format&fit=crop&w=1500&q=80");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: relative;
+
+    animation: fadeIn 1s ease;
+}
+
+/* ESCURECER FUNDO */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+}
+
+/* CONTAINER */
+.container {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 420px;
+
+    display: flex;
+    justify-content: center;
+
+    animation: slideUp 0.7s ease;
+}
+
+/* LOGIN */
+.login-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-content {
+    width: 100%;
+}
+
+/* LOGO */
+
+.logo-text {
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.logo-carga {
+    color: white;
+}
+
+.logo-byte {
+    color: #FF7A00;
+}
+
+/* CARD */
+.card {
+    background: rgba(255,255,255,0.95);
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    margin-bottom: 20px;
+
+    backdrop-filter: blur(10px);
+
+    animation: slideUp 0.8s ease;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.card-description {
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* FORM */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    transition: 0.3s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #FF7A00;
+
+    box-shadow: 0 0 10px rgba(255,122,0,0.3);
+
+    transform: scale(1.02);
+}
+
+/* SENHA + ESQUECI SENHA */
+.password-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forgot-password {
+    font-size: 12px;
+    color: #FF7A00;
+    text-decoration: none;
+
+    transition: 0.3s ease;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+/* BOTÃO */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+
+    background: #FF7A00;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.btn-submit:hover {
+    background: #e66d00;
+
+    transform: translateY(-2px) scale(1.02);
+
+    box-shadow: 0 8px 20px rgba(255,122,0,0.35);
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}
+
+/* CADASTRO */
+.signup-link {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.signup-text {
+    color: #666;
+}
+
+.signup-link-text {
+    color: #FF7A00;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 5px;
+
+    transition: 0.3s ease;
+}
+
+.signup-link-text:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+/* FEATURES */
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 20px;
+
+    color: white;
+
+    text-align: center;
+
+    animation: slideUp 0.9s ease both;
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 8px;
+
+    transition: 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(6px);
+
+    font-size: 18px;
+
+    transition: 0.3s ease;
+}
+
+.feature-item:hover .feature-icon {
+    background: rgba(255,255,255,0.25);
+
+    transform: scale(1.08);
+}
+
+.feature-text {
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+/* UTILITÁRIO */
+.hidden {
+    display: none !important;
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+    .container {
+        max-width: 95%;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+}

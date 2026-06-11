@@ -1,0 +1,220 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    background-image: url("https://images.unsplash.com/photo-1616432043562-3671ea2e5242?auto=format&fit=crop&w=1500&q=80");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: relative;
+
+    animation: fadeIn 1s ease;
+}
+
+/* ESCURECER FUNDO */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+}
+
+/* CONTAINER */
+.cadastro-container {
+    background-color: rgba(255,255,255,0.95);
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    width: 100%;
+    max-width: 420px;
+
+    z-index: 1;
+
+    font-weight: bold;
+
+    backdrop-filter: blur(10px);
+
+    animation: slideUp 0.8s ease;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* TÍTULO */
+.cadastro-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+
+    animation: slideUp 0.9s ease;
+}
+
+/* LABEL */
+.cadastro-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* INPUT */
+.cadastro-container input {
+    width: 100%;
+    padding: 12px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    transition: 0.3s ease;
+}
+
+.cadastro-container input:focus {
+    outline: none;
+
+    border-color: #FF7A00;
+
+    box-shadow: 0 0 10px rgba(255,122,0,0.25);
+
+    transform: scale(1.02);
+}
+
+/* BOTÃO */
+.cadastro-container button {
+    width: 100%;
+    padding: 12px;
+
+    background-color: #FF7A00;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+
+    font-weight: bold;
+
+    transition: 0.3s ease;
+}
+
+.cadastro-container button:hover {
+    background-color: #e66d00;
+
+    transform: translateY(-2px) scale(1.02);
+
+    box-shadow: 0 8px 20px rgba(255,122,0,0.35);
+}
+
+.cadastro-container button:active {
+    transform: scale(0.98);
+}
+
+/* LOGO */
+.logo p {
+    font-size: 30px;
+    font-weight: bold;
+
+    text-align: center;
+
+    margin-bottom: 20px;
+
+    animation: slideUp 0.6s ease;
+}
+
+.logo .emphasis {
+    color: #FF7A00;
+}
+
+/* LINHA */
+hr {
+    border: none;
+    border-top: 1px solid #ccc;
+
+    margin: 20px 0;
+}
+
+/* LOGIN LINK */
+.login-link {
+    text-align: center;
+
+    margin-top: 15px;
+
+    font-size: 13px;
+
+    color: #666;
+}
+
+.login-link a {
+    color: #FF7A00;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.3s ease;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+/* MESSAGE */
+.message {
+    text-align: center;
+
+    font-size: 13px;
+
+    color: #666;
+
+    margin-bottom: 20px;
+
+    animation: slideUp 1s ease;
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+    .cadastro-container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .logo p {
+        font-size: 26px;
+    }
+}
