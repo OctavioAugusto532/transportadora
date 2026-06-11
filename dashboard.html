@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CargaByte — Dashboard</title>
+  <link rel="stylesheet" href="dashboardStyling.css" />
+</head>
+<body>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-wrapper">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M3 9L12 2L21 9V20C21 20.53 20.79 21.04 20.41 21.41C20.04 21.79 19.53 22 19 22H5C4.47 22 3.96 21.79 3.59 21.41C3.21 21.04 3 20.53 3 20V9Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 22V12H15V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="logo-text">Carga<span class="logo-byte">Byte</span></span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-item active">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </button>
+      <button class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        Entregas
+      </button>
+      <button class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Rotas
+      </button>
+      <button class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Motoristas
+      </button>
+      <button class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        Relatórios
+      </button>
+      <button class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Documentos
+      </button>
+      <button class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M1 12h2M21 12h2M12 1v2M12 21v2"/></svg>
+        Configurações
+      </button>
+    </nav>
+
+    <div class="sidebar-user">
+      <div class="user-card">
+        <div class="user-avatar">JD</div>
+        <div class="user-info">
+          <p class="user-name">João da Silva</p>
+          <p class="user-role">Administrador</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-content">
+
+    <!-- Header -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1 class="page-title">Dashboard</h1>
+        <p class="page-subtitle">Bem-vindo de volta, João! Aqui está o resumo de hoje.</p>
+      </div>
+      <div class="topbar-right">
+        <div class="search-wrapper">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input class="search-input" type="text" placeholder="Buscar entregas..." />
+        </div>
+        <button class="notif-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="notif-dot"></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="page-body">
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card" style="--card-color: #FF7A00; animation-delay: 0.1s;">
+          <div class="stat-bg-blob"></div>
+          <div class="stat-body">
+            <div class="stat-header">
+              <div>
+                <p class="stat-label">Entregas Ativas</p>
+                <h3 class="stat-value">24</h3>
+              </div>
+              <div class="stat-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+            </div>
+            <p class="stat-trend positive">↑ 12.5% <span>vs. mês anterior</span></p>
+          </div>
+        </div>
+
+        <div class="stat-card" style="--card-color: #059669; animation-delay: 0.2s;">
+          <div class="stat-bg-blob"></div>
+          <div class="stat-body">
+            <div class="stat-header">
+              <div>
+                <p class="stat-label">Em Trânsito</p>
+                <h3 class="stat-value">18</h3>
+              </div>
+              <div class="stat-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              </div>
+            </div>
+            <p class="stat-trend positive">↑ 8.2% <span>vs. mês anterior</span></p>
+          </div>
+        </div>
+
+        <div class="stat-card" style="--card-color: #1f2937; animation-delay: 0.3s;">
+          <div class="stat-bg-blob"></div>
+          <div class="stat-body">
+            <div class="stat-header">
+              <div>
+                <p class="stat-label">Receita Hoje</p>
+                <h3 class="stat-value" style="font-size:1.6rem;">R$ 12.450</h3>
+              </div>
+              <div class="stat-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+            </div>
+            <p class="stat-trend negative">↓ 5.7% <span>vs. mês anterior</span></p>
+          </div>
+        </div>
+
+        <div class="stat-card" style="--card-color: #FF7A00; animation-delay: 0.4s;">
+          <div class="stat-bg-blob"></div>
+          <div class="stat-body">
+            <div class="stat-header">
+              <div>
+                <p class="stat-label">Taxa de Sucesso</p>
+                <h3 class="stat-value">98.5%</h3>
+              </div>
+              <div class="stat-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </div>
+            </div>
+            <p class="stat-trend positive">↑ 2.1% <span>vs. mês anterior</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Row -->
+      <div class="charts-row">
+        <!-- Revenue Chart -->
+        <div class="card chart-card">
+          <div class="card-header">
+            <h3 class="card-title">Receita Mensal</h3>
+            <p class="card-subtitle">Evolução dos últimos 6 meses</p>
+          </div>
+          <div class="chart-area">
+            <svg viewBox="0 0 600 260" preserveAspectRatio="none" class="chart-svg">
+              <defs>
+                <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%"  stop-color="#FF7A00" stop-opacity="0.35"/>
+                  <stop offset="95%" stop-color="#FF7A00" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <!-- Grid lines -->
+              <line x1="0" y1="52"  x2="600" y2="52"  stroke="#f0f0f0" stroke-width="1"/>
+              <line x1="0" y1="104" x2="600" y2="104" stroke="#f0f0f0" stroke-width="1"/>
+              <line x1="0" y1="156" x2="600" y2="156" stroke="#f0f0f0" stroke-width="1"/>
+              <line x1="0" y1="208" x2="600" y2="208" stroke="#f0f0f0" stroke-width="1"/>
+              <!-- Y labels -->
+              <text x="4" y="50"  font-size="11" fill="#6b7280">R$ 65k</text>
+              <text x="4" y="102" font-size="11" fill="#6b7280">R$ 55k</text>
+              <text x="4" y="154" font-size="11" fill="#6b7280">R$ 45k</text>
+              <text x="4" y="206" font-size="11" fill="#6b7280">R$ 35k</text>
+              <!-- X labels -->
+              <text x="52"  y="248" font-size="11" fill="#6b7280" text-anchor="middle">Jan</text>
+              <text x="152" y="248" font-size="11" fill="#6b7280" text-anchor="middle">Fev</text>
+              <text x="252" y="248" font-size="11" fill="#6b7280" text-anchor="middle">Mar</text>
+              <text x="352" y="248" font-size="11" fill="#6b7280" text-anchor="middle">Abr</text>
+              <text x="452" y="248" font-size="11" fill="#6b7280" text-anchor="middle">Mai</text>
+              <text x="552" y="248" font-size="11" fill="#6b7280" text-anchor="middle">Jun</text>
+              <!-- Area fill: Jan=45k→y≈180, Fev=52k→y≈145, Mar=48k→y≈165, Abr=61k→y≈115, Mai=55k→y≈140, Jun=67k→y≈90 -->
+              <polygon
+                points="52,180 152,145 252,165 352,115 452,140 552,90 552,230 52,230"
+                fill="url(#areaGrad)"
+              />
+              <!-- Line -->
+              <polyline
+                points="52,180 152,145 252,165 352,115 452,140 552,90"
+                fill="none"
+                stroke="#FF7A00"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="chart-line"
+              />
+              <!-- Dots -->
+              <circle cx="52"  cy="180" r="5" fill="#FF7A00"/>
+              <circle cx="152" cy="145" r="5" fill="#FF7A00"/>
+              <circle cx="252" cy="165" r="5" fill="#FF7A00"/>
+              <circle cx="352" cy="115" r="5" fill="#FF7A00"/>
+              <circle cx="452" cy="140" r="5" fill="#FF7A00"/>
+              <circle cx="552" cy="90"  r="5" fill="#FF7A00"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Activity Feed -->
+        <div class="card activity-card">
+          <div class="card-header">
+            <h3 class="card-title">Atividades Recentes</h3>
+            <p class="card-subtitle">Últimas atualizações do sistema</p>
+          </div>
+          <div class="activity-list">
+            <div class="activity-item" style="animation-delay:0.7s">
+              <div class="activity-icon" style="--ic:#059669">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div class="activity-text">
+                <p class="activity-title">Entrega Concluída</p>
+                <p class="activity-desc">Pedido #BR-2024-1523 entregue com sucesso</p>
+                <p class="activity-time">5 min atrás</p>
+              </div>
+            </div>
+            <div class="activity-item" style="animation-delay:0.8s">
+              <div class="activity-icon" style="--ic:#FF7A00">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF7A00" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              </div>
+              <div class="activity-text">
+                <p class="activity-title">Em Trânsito</p>
+                <p class="activity-desc">Pedido #BR-2024-1524 saiu para entrega</p>
+                <p class="activity-time">15 min atrás</p>
+              </div>
+            </div>
+            <div class="activity-item" style="animation-delay:0.9s">
+              <div class="activity-icon" style="--ic:#1f2937">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+              <div class="activity-text">
+                <p class="activity-title">Nova Entrega</p>
+                <p class="activity-desc">Pedido #BR-2024-1525 aguardando coleta</p>
+                <p class="activity-time">1 hora atrás</p>
+              </div>
+            </div>
+            <div class="activity-item" style="animation-delay:1s">
+              <div class="activity-icon" style="--ic:#6b7280">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="activity-text">
+                <p class="activity-title">Aguardando Motorista</p>
+                <p class="activity-desc">Pedido #BR-2024-1526 sem motorista atribuído</p>
+                <p class="activity-time">2 horas atrás</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deliveries Section -->
+      <div class="deliveries-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Entregas Disponíveis</h2>
+            <p class="section-subtitle" id="delivery-count">4 entregas aguardando motorista</p>
+          </div>
+          <button class="btn-primary">Ver Todas</button>
+        </div>
+
+        <div class="deliveries-grid" id="deliveries-grid">
+
+          <!-- Card 1 -->
+          <div class="delivery-card" data-id="BR-2024-1530" style="--pcolor:#FF7A00; animation-delay:0.1s">
+            <div class="dc-header">
+              <div class="dc-id-block">
+                <div class="dc-pkg-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF7A00" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+                <div><p class="dc-id">BR-2024-1530</p><p class="dc-priority">Prioridade: <span style="color:#FF7A00">Alta</span></p></div>
+              </div>
+              <span class="dc-badge">Disponível</span>
+            </div>
+            <div class="dc-route">
+              <div class="dc-point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF7A00" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><p class="dc-point-label">Origem</p><p class="dc-point-val">São Paulo, SP - Centro</p></div></div>
+              <div class="dc-connector"></div>
+              <div class="dc-point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><p class="dc-point-label">Destino</p><p class="dc-point-val">Rio de Janeiro, RJ - Zona Sul</p></div></div>
+            </div>
+            <div class="dc-info">
+              <div><p class="dc-info-label">Distância</p><p class="dc-info-val">435 km</p></div>
+              <div><p class="dc-info-label">Peso</p><p class="dc-info-val">850 kg</p></div>
+              <div><p class="dc-info-label">Prazo</p><p class="dc-info-val">24h</p></div>
+            </div>
+            <div class="dc-footer">
+              <span class="dc-payment">R$ 2.450</span>
+              <button class="btn-accept" onclick="acceptDelivery(this)">Aceitar</button>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="delivery-card" data-id="BR-2024-1531" style="--pcolor:#FF7A00; animation-delay:0.2s">
+            <div class="dc-header">
+              <div class="dc-id-block">
+                <div class="dc-pkg-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF7A00" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+                <div><p class="dc-id">BR-2024-1531</p><p class="dc-priority">Prioridade: <span style="color:#FF7A00">Média</span></p></div>
+              </div>
+              <span class="dc-badge">Disponível</span>
+            </div>
+            <div class="dc-route">
+              <div class="dc-point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF7A00" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><p class="dc-point-label">Origem</p><p class="dc-point-val">Belo Horizonte, MG</p></div></div>
+              <div class="dc-connector"></div>
+              <div class="dc-point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><p class="dc-point-label">Destino</p><p class="dc-point-val">Brasília, DF</p></div></div>
+            </div>
+            <div class="dc-info">
+              <div><p class="dc-info-label">Distância</p><p class="dc-info-val">716 km</p></div>
+              <div><p class="dc-info-label">Peso</p><p class="dc-info-val">1.2 ton</p></div>
+              <div><p class="dc-info-label">Prazo</p><p class="dc-info-val">36h</p></div>
+            </div>
+            <div class="dc-footer">
+              <span class="dc-payment">R$ 3.200</span>
+              <button class="btn-accept" onclick="acceptDelivery(this)">Aceitar</button>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="delivery-card" data-id="BR-2024-1532" style="--pcolor:#059669; animation-delay:0.3s">
+            <div class="dc-header">
+              <div class="dc-id-block">
+                <div class="dc-pkg-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+                <div><p class="dc-id">BR-2024-1532</p><p class="dc-priority">Prioridade: <span style="color:#059669">Baixa</span></p></div>
+              </div>
+              <span class="dc-badge" style="background:rgba(5,150,105,.1);color:#059669">Disponível</span>
+            </div>
+            <div class="dc-route">
+              <div class="dc-point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF7A00" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><p class="dc-point-label">Origem</p><p class="dc-point-val">Curitiba, PR</p></div></div>
+              <div class="dc-connector"></div>
+              <div class="dc-point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><p class="dc-point-label">Destino</p><p class="dc-point-val">Florianópolis, SC</p></div></div>
+            </div>
+            <div class="dc-info">
+              <div><p class="dc-info-label">Distância</p><p class="dc-info-val">300 km</p></div>
+              <div><p class="dc-info-label">Peso</p><p class="dc-info-val">450 kg</p></div>
+              <div><p class="dc-info-label">Prazo</p><p class="dc-info-val">48h</p></div>
+            </div>
+            <div class="dc-footer">
+              <span class="dc-payment">R$ 1.800</span>
+              <button class="btn-accept" onclick="acceptDelivery(this)">Aceitar</button>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="delivery-card" data-id="BR-2024-1533" style="--pcolor:#FF7A00; animation-delay:0.4s">
+            <div class="dc-header">
+              <div class="dc-id-block">
+                <div class="dc-pkg-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF7A00" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+                <div><p class="dc-id">BR-2024-1533</p><p class="dc-priority">Prioridade: <span style="color:#FF7A00">Alta</span></p></div>
+              </div>
+              <span class="dc-badge">Disponível</span>
+            </div>
+            <div class="dc-route">
+              <div class="dc-point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF7A00" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><p class="dc-point-label">Origem</p><p class="dc-point-val">Porto Alegre, RS</p></div></div>
+              <div class="dc-connector"></div>
+              <div class="dc-point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><p class="dc-point-label">Destino</p><p class="dc-point-val">São Paulo, SP</p></div></div>
+            </div>
+            <div class="dc-info">
+              <div><p class="dc-info-label">Distância</p><p class="dc-info-val">1.120 km</p></div>
+              <div><p class="dc-info-label">Peso</p><p class="dc-info-val">2 ton</p></div>
+              <div><p class="dc-info-label">Prazo</p><p class="dc-info-val">48h</p></div>
+            </div>
+            <div class="dc-footer">
+              <span class="dc-payment">R$ 4.500</span>
+              <button class="btn-accept" onclick="acceptDelivery(this)">Aceitar</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== TOAST ===== -->
+  <div class="toast" id="toast">
+    <div class="toast-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+    <div class="toast-body">
+      <p class="toast-title">Entrega Aceita!</p>
+      <p class="toast-msg" id="toast-msg">Pedido aceito com sucesso.</p>
+    </div>
+    <button class="toast-close" onclick="closeToast()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="toast-progress" id="toast-progress"></div>
+  </div>
+
+  <script>
+    let deliveryCount = 4;
+    let toastTimer;
+
+    function acceptDelivery(btn) {
+      const card = btn.closest('.delivery-card');
+      const id = card.dataset.id;
+
+      btn.textContent = 'Aceitando...';
+      btn.disabled = true;
+      card.classList.add('removing');
+
+      setTimeout(() => {
+        card.remove();
+        deliveryCount--;
+        document.getElementById('delivery-count').textContent =
+          deliveryCount + ' entrega' + (deliveryCount !== 1 ? 's' : '') + ' aguardando motorista';
+        if (deliveryCount === 0) {
+          document.getElementById('deliveries-grid').innerHTML =
+            '<div class="empty-state"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg><p class="empty-title">Todas as entregas foram aceitas!</p><p class="empty-sub">Novas entregas aparecerão aqui automaticamente.</p></div>';
+        }
+      }, 600);
+
+      showToast(id);
+    }
+
+    function showToast(id) {
+      document.getElementById('toast-msg').textContent =
+        'Pedido ' + id + ' foi adicionado às suas entregas';
+      const toast = document.getElementById('toast');
+      const progress = document.getElementById('toast-progress');
+      toast.classList.add('show');
+      progress.style.transition = 'none';
+      progress.style.width = '100%';
+      requestAnimationFrame(() => {
+        progress.style.transition = 'width 4s linear';
+        progress.style.width = '0%';
+      });
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(closeToast, 4000);
+    }
+
+    function closeToast() {
+      document.getElementById('toast').classList.remove('show');
+    }
+  </script>
+</body>
+</html>
