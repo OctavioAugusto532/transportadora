@@ -1,42 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="registerStyling.css" />
-    <title>Cadastro</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="registerStyling.css" />
 </head>
 <body>
-    <div class="cadastro-container">
-        <h1>Cadastre-se Aqui</h1>
-        <div class="logo">
-            <p>Carga<span class="emphasis">Byte</span></p>
-        </div>
-        <p class="message">Estamos felizes em tê-lo(a) conosco!</p>
-        <hr>
-        <form action="/register" method="post">
-            <label for="username">Usuário:</label>
-            <input type="text" id="username" name="username" placeholder="Informe seu nome de usuário" required>
+  <div class="cadastro-container">
+    <h1>Cadastre-se Aqui</h1>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Informe seu email" required>
-            <label for="confirm_email">Confirmar Email:</label>
-            <input type="email" id="confirm_email" name="confirm_email" placeholder="Confirme seu email" required>
-
-            <label for="password">Senha:</label>
-            <input type="password" id="password" name="password" placeholder="Informe sua senha" required>
-            <label for="confirm_password">Confirmar Senha:</label>
-            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirme sua senha" required>
-
-            <button type="submit">Registrar</button>
-
-            <div class="login-link">
-    <a href="login.html">
-        <span>Já tem uma conta?</span>
-        <span>Faça login aqui</span>
-    </a>
-</div>
-        </form>
+    <div class="logo">
+      <p>Carga<span class="emphasis">Byte</span></p>
     </div>
+
+    <p class="message">Estamos felizes em tê-lo(a) conosco!</p>
+    <hr />
+
+    <form id="registerForm">
+      <label for="username">Usuário:</label>
+      <input type="text" id="username" name="username" placeholder="Informe seu nome de usuário" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Informe seu email" required />
+
+      <label for="confirm_email">Confirmar Email:</label>
+      <input type="email" id="confirm_email" name="confirm_email" placeholder="Confirme seu email" required />
+
+      <label for="password">Senha:</label>
+      <input type="password" id="password" name="password" placeholder="Informe sua senha" required />
+
+      <label for="confirm_password">Confirmar Senha:</label>
+      <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirme sua senha" required />
+
+      <button type="submit">Registrar</button>
+
+      <div class="login-link">
+        <a href="login.html">
+          <span>Já tem uma conta?</span>
+          <span>Faça login aqui</span>
+        </a>
+      </div>
+    </form>
+  </div>
+
+  <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getDatabase,
+  ref,
+  get,
+  set
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+console.log("SCRIPT CARREGOU");
+
+const firebaseConfig = {
+  apiKey: "AIzaSyABC2rj2jSLxaQU5yyt3YVu5DwDhmSBVJk",
+  authDomain: "logistica-48ee6.firebaseapp.com",
+  databaseURL: "https://logistica-48ee6-default-rtdb.firebaseio.com",
+  projectId: "logistica-48ee6",
+  storageBucket: "logistica-48ee6.firebasestorage.app",
+  messagingSenderId: "839929978637",
+  appId: "1:839929978637:web:ae02e3cb5a4c635078da44"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const form = document.getElementById("registerForm");
+
+form.addEventListener("submit", async (e) => {
+
+  console.log("BOTAO CLICADO");
+
+  e.preventDefault();
+
+  const username = document.getElementById("username").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const confirmEmail = document.getElementById("confirm_email").value.trim();
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirm_password").value;
+
+  if (email !== confirmEmail) {
+    alert("Os e-mails não conferem.");
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    alert("As senhas não conferem.");
+    return;
+  }
+
+  try {
+
+    const emailKey = email.replace(/\./g, "_");
+
+    const usuarioRef = ref(db, "usuarios/" + emailKey);
+
+    const snapshot = await get(usuarioRef);
+
+    if (snapshot.exists()) {
+      alert("Esse e-mail já foi cadastrado.");
+      return;
+    }
+
+    await set(usuarioRef, {
+      username: username,
+      email: email,
+      password: password
+    });
+
+    alert("Cadastro realizado com sucesso!");
+
+    window.location.href = "login.html";
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert("Erro: " + error.message);
+  }
+});
+</script>
 </body>
 </html>
