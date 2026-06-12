@@ -1,85 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-
-    <link rel="stylesheet" href="login.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css">
 </head>
-
 <body>
 
-    <div class="container">
+  <div class="container">
+    <div class="login-section">
+      <div class="login-content">
 
-        <div class="login-section">
+        <!-- CARD LOGIN -->
+        <div class="card">
+          <h2 class="card-title">Bem-vindo de volta</h2>
+          <p class="card-description">Entre com suas credenciais</p>
 
-            <div class="login-content">
-
-                <!-- CARD LOGIN -->
-                <div class="card">
-
-                    <h2 class="card-title">Bem-vindo de volta</h2>
-                    <p class="card-description">Entre com suas credenciais</p>
-
-                    <form class="form">
-
-                        <div class="form-group">
-                            <label class="label">E-mail</label>
-                            <input type="email" class="input" placeholder="seu@email.com">
-                        </div>
-
-                        <div class="form-group">
-
-                            <div class="password-label-row">
-                                <label class="label">Senha</label>
-
-                                <a href="forgot-password.html" class="forgot-password">
-                                    Esqueceu a senha?
-                                </a>
-                            </div>
-
-                            <input type="password" class="input" placeholder="••••••••">
-
-                        </div>
-
-                        <button class="btn-submit">Entrar</button>
-
-                    </form>
-
-                    <!-- CADASTRO -->
-                    <div class="signup-link">
-                        <span class="signup-text">Não tem uma conta?</span>
-                        <a href="register.html" class="signup-link-text">Se cadastre</a>
-                    </div>
-
-                </div>
-
-                <!-- FEATURES -->
-                <div class="features">
-
-                    <div class="feature-item">
-                        <div class="feature-icon">🚚</div>
-                        <p class="feature-text">Rastreamento em tempo real</p>
-                    </div>
-
-                    <div class="feature-item">
-                        <div class="feature-icon">📦</div>
-                        <p class="feature-text">Gestão de entregas</p>
-                    </div>
-
-                    <div class="feature-item">
-                        <div class="feature-icon">🔒</div>
-                        <p class="feature-text">Segurança garantida</p>
-                    </div>
-
-                </div>
-
+          <form class="form" id="loginForm">
+            <div class="form-group">
+              <label class="label">E-mail</label>
+              <input type="email" class="input" id="email" placeholder="seu@email.com" required>
             </div>
 
+            <div class="form-group">
+              <div class="password-label-row">
+                <label class="label">Senha</label>
+                <a href="forgot-password.html" class="forgot-password">Esqueceu a senha?</a>
+              </div>
+
+              <input type="password" class="input" id="password" placeholder="••••••••" required>
+            </div>
+
+            <button class="btn-submit" type="submit">Entrar</button>
+          </form>
+
+          <!-- CADASTRO -->
+          <div class="signup-link">
+            <span class="signup-text">Não tem uma conta?</span>
+            <a href="register.html" class="signup-link-text">Se cadastre</a>
+          </div>
         </div>
 
+        <!-- FEATURES -->
+        <div class="features">
+          <div class="feature-item">
+            <div class="feature-icon">🚚</div>
+            <p class="feature-text">Rastreamento em tempo real</p>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">📦</div>
+            <p class="feature-text">Gestão de entregas</p>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">🔒</div>
+            <p class="feature-text">Segurança garantida</p>
+          </div>
+        </div>
+
+      </div>
     </div>
+  </div>
+   <!--Eu sei que isso esta exposto mas é só uma key de teste-->
+  <script type="module">
+    
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getDatabase,
+  ref,
+  get
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyABC2rj2jSLxaQU5yyt3YVu5DwDhmSBVJk",
+  authDomain: "logistica-48ee6.firebaseapp.com",
+  databaseURL: "https://logistica-48ee6-default-rtdb.firebaseio.com",
+  projectId: "logistica-48ee6",
+  storageBucket: "logistica-48ee6.firebasestorage.app",
+  messagingSenderId: "839929978637",
+  appId: "1:839929978637:web:ae02e3cb5a4c635078da44"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const loginForm = document.getElementById("loginForm");
+
+console.log("LOGIN CARREGADO");
+
+loginForm.addEventListener("submit", async (e) => {
+
+  e.preventDefault();
+
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+
+  try {
+
+    const emailKey = email.replace(/\./g, "_");
+
+    const usuarioRef = ref(db, "usuarios/" + emailKey);
+
+    const snapshot = await get(usuarioRef);
+
+    if (!snapshot.exists()) {
+      alert("Usuário não encontrado.");
+      return;
+    }
+
+    const usuario = snapshot.val();
+
+    if (usuario.password !== password) {
+      alert("Senha incorreta.");
+      return;
+    }
+
+    localStorage.setItem("logado", "true");
+    localStorage.setItem("usuario", usuario.username);
+    localStorage.setItem("email", usuario.email);
+
+    alert("Login realizado com sucesso!");
+
+    window.location.href = "index.html";
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert("Erro ao fazer login: " + error.message);
+  }
+});
+</script>
+
 
 </body>
 </html>
