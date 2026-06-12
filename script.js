@@ -204,7 +204,7 @@
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
       alert('Login realizado com sucesso!');
-      window.location.href = 'dashboard.html';
+      window.location.href = 'comecar.html';
     });
   }
 
